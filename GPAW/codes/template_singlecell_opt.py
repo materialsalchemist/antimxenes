@@ -18,7 +18,7 @@ def run_gpaw(input_cif, planewave, kpts, output_folder):
             break
     name = input_cif[:-4]
     monx = ase.io.read(input_cif)
-    calc_PBE = GPAW(mode=PW(planewave),xc='PBE',kpts=kpts)
+    calc_PBE = GPAW(mode=PW(planewave),xc='PBE',kpts=kpts, spinpol = True, hund = True)
     monx.set_calculator(calc_PBE)
     box = FrechetCellFilter(monx, mask = [1,1,0,1,1,1],exp_cell_factor=20)
 
